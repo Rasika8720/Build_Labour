@@ -1,0 +1,34 @@
+
+ Company Registration - url: http://localhost:8000/company/register
+
+- Input company name and company type (specialisation). Result 'P'
+
+- Rename 'Business Entity Type' to 'Industry Segment'. Result 'P'
+
+- Rename 'Entity Type Special' to 'Market Segment'. Result 'F'
+
+- Upload Company Logo crop function terrible, will result to whole logo uploaded. No need 'Upload' functionality. Result 'F'
+
+- 'Back' button functionality if ever input adjustments needed. Result 'F'
+
+- 'Start type address' auto suggestion feature. Result 'F'
+
+- Structure address auto suggestion. Result 'F'
+
+- 'Business contact number' must be 10 digit and structured by mobile or landline. Result 'F'
+
+- 'Business website' must be optional. Result 'P'
+
+- 'Operation other states'. Result 'P'
+
+- Last onboarding step: Email address, password, confirm password. Result 'P'.
+
+- Auto Login after last step of onboarding. Result 'P'
+
+- 'Logout' user. Result 'P'
+
+Company Login -
+
+- Login by email and password. Result 'P'
+
+

@@ -1,0 +1,51 @@
+Table users {
+   id int [primary key]
+   first_name varchar
+   last_name varchar
+   email varchar [unique]
+   password varchar
+   date_of_birth date
+   country varchar
+   mobile_number varchar
+   address varchar
+   profile_photo_url varchar
+   verification_code varchar
+   marital_status varchar
+   gender varchar
+   is_verified date
+   role_id int
+   remember_token varchar
+   created_at date
+   updated_at date
+ }
+
+ Table companies {
+   id int [primary key]
+   name varchar
+   address varchar
+   contact_email varchar
+   contact_name varchar
+   phone varchar
+   photo varchar
+   introduction varchar
+   created_by int
+   created_at date
+   updated_at date
+ }
+
+ Ref: users.id < companies.created_by
+
+ Table user_tickets {
+    id int [primary key]
+    user_id int
+    ticket_id int
+ }
+
+ Table tickets {
+    id int [primary key]
+    ticket varchar
+    description varchar
+    created_by int
+    update_at date
+    created_at date
+ }

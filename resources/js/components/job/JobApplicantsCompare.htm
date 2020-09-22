@@ -1,0 +1,185 @@
+<div class="compare-wrapper">
+    <div class="card-wrapper" v-for="(applicant, index) in applicants">
+        <span v-if="false">
+              index: {{ index }}, applicant_id: {{ applicant.id }}
+        </span>
+        <div class="profile-item-2">
+            <div class="profile-content p-0 pb-1">
+                <div class="item general-info">
+                    <p class="mb-2">
+                        <span class="bl-label-19">{{ applicant.full_name }}</span>
+                        <span class="item shortlist-options float-right">
+                            <div class="action-wrapper">
+                                 <span class="action" @click="doScore(applicant.user_id, 'favourite')">
+                                    <div>
+                                         <img class="mr-1" :src="getFavouriteImg(applicant.user_id)">
+                                    </div>
+                                    <div>Shortlist</div>
+                                </span>
+                                <span class="action" @click="doScore(applicant.user_id, 'not_suitable')">
+                                    <div>
+                                         <img class="mr-1" :src="getNotSuitImg(applicant.user_id)">
+                                    </div>
+                                    <div>Reject</div>
+                                </span>
+                            </div>
+                        </span>
+                    </p>
+                    <p class="job-role">
+                        <span class="bl-label-14" style="margin-top: -5px;">{{ applicant.job_role }} <strong>{{ applicant.company_name }}</strong></span>
+                    </p>
+
+                    <div class="bl-mb20 profile-description" :ref="`wrapper-profile-description` + index">
+                        <p class="p-description-content" :ref="`profile-description` + index">
+                            <span v-if="applicant.profile_description">{{ applicant.profile_description }}</span>
+                            <i style="text-decoration: line-through;" v-else>Description is not yet provided.</i>
+                        </p>
+                        <a href="javascript:void(0)" v-if="isLimitWords(applicant.profile_description)" @click="onClickExpandProfileDescription(index)" :ref="`p-description-read-more-` + index">Read more...</a>
+                    </div>
+                    <div class="bl-mb20 area-tier">
+                        <div class="bl-display bl-label-15-style-2" v-for="(sector, idx) in applicant.sectors" :key="idx">
+                            {{ sector.business_type }}
+                            <div class="bl-inline" v-if="idx != Object.keys(applicant.sectors).length - 1"> •&nbsp;</div>
+                        </div>
+                        <i style="text-decoration: line-through;" v-if="applicant.sectors.length <= 0">No sectors selected</i>
+                        <br>
+                        <div class="bl-display" v-for="(tier, idx) in applicant.tiers">
+                            {{ tier.tier_name }}
+                            <div class="bl-inline" v-if="idx != Object.keys(applicant.tiers).length - 1"> •&nbsp;</div>
+                        </div>
+                        <i style="text-decoration: line-through;" v-if="applicant.tiers <= 0">No tiers selected</i>
+                    </div>
+                    <div class="bl-mb20">
+                        <div class="bl-display bl-label-15-style-2">
+                            English Skill
+                        </div>
+                        <span class="bl-display">{{ parseEnglish(applicant.english_skill) }}</span>
+                    </div>
+                    <div class="bl-mb20">
+                        <div class="bl-display bl-label-15-style-2">
+                            Drivers Licence
+                        </div>
+                        <span class="bl-display">{{ parseDriversLicense(JSON.parse(applicant.params).drivers_license_state) }}</span>
+                    </div>
+                    <div class="bl-mb20">
+                        <div class="bl-display bl-label-15-style-2">
+                            Right to Work
+                        </div>
+                        <span class="bl-display">{{ parseRightToWork(applicant.right_to_work) }}</span>
+                    </div>
+                </div>
+
+                <!-- employments -->
+                <div class="item employments" :ref="`employments` + index">
+                    <div class="profile-title mb-3">
+                        Employment History
+                        <span class="collapse-close">
+                                    <img :src="imgSrcExpand" :srcset="imgSrcSetExpand" :ref="'EmploymentsToggleImg-' + index" @click="onClickExpandEmployments(index)">
+                                </span>
+                    </div>
+                    <employment-list-compare :employments="applicant.experiences" v-if="applicant.experiences.length > 0"></employment-list-compare>
+
+                    <p v-else>
+                        <i style="text-decoration: line-through;">No Employment History provided.</i>
+                    </p>
+                </div>
+
+                <!-- educations -->
+                <div class="item educations" :ref="`educations` + index">
+                    <div class="profile-title mb-3">
+                        Education
+                        <span class="collapse-close">
+                                    <img :src="imgSrcExpand" :srcset="imgSrcSetExpand" :ref="'EducationsToggleImg-' + index" @click="onClickExpandEducations(index)">
+                                </span>
+                    </div>
+
+                    <education-list-compare :educations="applicant.educations" v-if="applicant.educations.length > 0"></education-list-compare>
+                    <p v-else>
+                        <i style="text-decoration: line-through;">Education not yet provided.</i>
+                    </p>
+                </div>
+
+                <!-- tickets -->
+                <div class="item tickets" :ref="`tickets` + index">
+                    <div class="profile-title mb-3">
+                        Tickets
+                        <span class="collapse-close">
+                                    <img :src="imgSrcExpand" :srcset="imgSrcSetExpand" :ref="'TicketsToggleImg-' + index" @click="onClickExpandTickets(index)">
+                                </span>
+                    </div>
+                    <p class="white_card text-success" v-if="applicant.has_whitecard">
+                        Has a valid and current White Card
+                    </p>
+                    <p class="white_card text-danger" v-else>
+                        No valid White Card
+                    </p>
+                    <ul v-if="applicant.tickets.length > 0">
+                        <li v-for="(ticket, idx) in applicant.tickets" :key="idx" class="mb-2">
+                            <div class="bl-display bl-label-15-style-2">
+                                {{ ticket.ticket }}
+                            </div>
+                            <span class="bl-display">{{ ticket.description }}</span>
+                        </li>
+                    </ul>
+                    <p v-else>
+                        <i style="text-decoration: line-through;">No tickets yet.</i>
+                    </p>
+                </div>
+
+                <!-- skills -->
+                <div class="item skills" :ref="`skills` + index">
+                    <div class="profile-title mb-3">
+                        Industry Achievements & Skills
+                        <span class="collapse-close">
+                                    <img :src="imgSrcExpand" :srcset="imgSrcSetExpand" :ref="'SkillsToggleImg-' + index" @click="onClickExpandSkills(index)">
+                                </span>
+                    </div>
+                    <ul v-if="applicant.skills.length > 0">
+                        <li v-for="(skill, idx) in applicant.skills" :key="idx" class="mb-2">
+                            <div class="bl-display bl-label-15-style-2">
+                                {{ skill.skill_name }}
+                            </div>
+                            <span class="bl-display">{{ skill.level_name }}</span>
+                        </li>
+                    </ul>
+
+                    <p v-else>
+                        <i style="text-decoration: line-through;">No skills yet.</i>
+                    </p>
+                </div>
+
+                <!-- ideal role -->
+                <div class="item next-role" :ref="`next-role` + index">
+                    <div class="profile-title mb-3">
+                        Ideal Next Role
+                        <span class="collapse-close">
+                            <img :src="imgSrcExpand" :srcset="imgSrcSetExpand" :ref="'NextRoleToggleImg-' + index" @click="onClickExpandNextRole(index)">
+                        </span>
+                    </div>
+                    <ul>
+                        <li class="mb-2">
+                            <span class="bl-display">{{ applicant.ideal_next_role }}</span>
+                        </li>
+                        <li class="mb-2">
+                            <div class="bl-display bl-label-15-style-2">
+                                Maximum Distance from home
+                            </div>
+                            <span class="bl-display">{{ applicant.max_distance }}km</span>
+                        </li>
+                        <li class="mb-2">
+                            <div class="bl-display bl-label-15-style-2">
+                                Willing to relocate to
+                            </div>
+                            <span class="bl-display">{{ applicant.states }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-item-2" v-if="stats && applicants.length <= 0">
+        <ul>
+            No Applicants yet.
+        </ul>
+    </div>
+</div>

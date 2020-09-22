@@ -1,0 +1,148 @@
+.applicant-no {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #005778;
+}
+.applicant-label {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.33;
+    text-align: center;
+    color: #383d3f;
+}
+.ns-no {
+    color: #a2b2b7;
+    margin-top: -6px;
+}
+.ns-label {
+    font-size: 13px;
+}
+.job-header {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #252829;
+    margin-top: 24px;
+    margin-bottom: -4px;
+}
+.job-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #435256;
+    margin-top: 16px;
+}
+.job-body {
+    font-size: 15px;
+    color: #000000;
+    margin-top: 8px;
+}
+ul.job-list-items {
+    list-style-type: none;
+    padding: 0 0 0 22px;
+
+    li::before {
+      content: "\2022";
+      color: #94a4a9;
+      display: inline-block;
+      width: 5px;
+      margin-left: -1.5em;
+      margin-right: 11px;
+    }
+
+    li {
+        margin-bottom: 12px;
+    }
+}
+ul.job-list-items-2 {
+    list-style-type: none;
+    padding: 0;
+}
+.company-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+    box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.19), 0 2px 12px 0 rgba(57, 86, 101, 0.12);
+    background-color: #fcfeff;
+    position: relative;
+    margin: 0 auto;
+
+    img {
+        overflow: hidden;
+        border-radius: 8px;
+        width: 100%;
+        box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.19), 0 2px 12px 0 rgba(57, 86, 101, 0.12);
+    }
+
+    &:hover {
+        cursor: pointer;
+        background: rgb(0, 0, 0, 0.8);
+        opacity: 0.8;
+        transition: .3s ease-in-out;
+    }
+}
+.company-title {
+    margin-top: 80px;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    color: #252829;
+}
+.company-address {
+    font-size: 17px;
+    text-align: center;
+    color: #484c4e;
+}
+.company-body {
+    font-size: 15px;
+    line-height: 1.33;
+    letter-spacing: -0.2px;
+    color: #2f2f2f;
+    margin-top: 27px;
+}
+.company-view {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    text-align: center;
+    margin: 24px 0 8px 0;
+    color: $brand;
+    cursor: pointer;
+
+    &:hover {
+        color: $brand-dark;
+    }
+}
+.page-search {
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    border: 0;
+    box-shadow: 0;
+    padding-left: 35px;
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+    background-image: url(/img/icons/search.png);
+    background-image: -webkit-image-set(url(/img/icons/search@2x.png) 2x, url(/img/icons/search@3x.png) 3x);
+}
+
+.page-search-loc {
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    border: 0;
+    box-shadow: 0;
+    padding-left: 35px;
+    background-position: 8px 5px;
+    background-size: 12px;
+    background-repeat: no-repeat;
+    background-image: url(/img/icons/pinlocation.png);
+    background-image: -webkit-image-set(url(/img/icons/pinlocation@2x.png) 2x, url(/img/icons/pinlocation@3x.png) 3x);
+}
+
+.filter-header {
+    font-weight: 600;
+    font-size: 20px;
+    color: #252829;
+    margin-bottom: 16px;
+}

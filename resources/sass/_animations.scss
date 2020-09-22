@@ -1,0 +1,91 @@
+.show-enter-active {
+    animation: go 1s;
+}
+@keyframes go {
+    from {
+        opacity: 0;
+    }
+    to {
+        transition: opacity .5s;
+    }
+}
+
+.appear-slide-enter-active {
+    animation: slide 1s;
+}
+@keyframes slide {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transition: opacity .5s;
+    }
+}
+
+// list
+.list-enter-active,
+.list-leave-active {
+    transition: all .5s ease;
+}
+.list-enter,
+.list-leave-to {
+    transform: translateX(-10px);
+    opacity: 0;
+}
+
+// list-down
+.list-down-enter-active,
+.list-down-leave-active {
+    transition: all .5s ease;
+}
+.list-down-enter,
+.list-down-leave-to {
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+// fade
+.fade-enter-active, 
+.fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+// slide-fade
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+.slide-fade-leave-active {
+    // transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transform: translateX(10px);
+    opacity: 0;
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+// bounce
+.bounce-enter-active {
+    animation: bounce-in .5s;
+}
+.bounce-leave-active {
+    animation: bounce-in .5s reverse;
+}
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
