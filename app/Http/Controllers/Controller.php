@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -25,8 +26,8 @@ class Controller extends BaseController
         $rawToken = substr($token, 1, -1);
         $token = new Token($rawToken);
         $payload = JWTAuth::decode($token);
-
-        return Auth::loginUsingId($payload['sub']);
+        //dd(User::find($payload['sub']));
+        return User::find($payload['sub']);//Auth::loginUsingId($payload['sub']);
     }
 
     public function clearAuthToken()

@@ -317,3 +317,9 @@ Route::namespace('API\V1\Admin')
                 Route::post('login', 'ApiAuthController@login');
             });
     });
+
+    Route::post('uploadJson', 'JobsController@uploadJson'); //when click Upload button on uploadJson page
+    Route::post('uploadAdsApprove/{id}', 'JobsController@uploadAdsApprove'); //when click Approve button on GridJobs page or UploadAds page
+    Route::get('UploadAdsApproveEdit/{id}','UsersController@UploadAdsApproveEdit'); //click edit on gridJobs page
+    Route::post('uploadAdsUpdate', 'JobsController@uploadAdsUpdate'); //when click update button on UploadEdit page
+    Route::post('textget', 'UsersController@text'); //when click update button on UploadEdit page

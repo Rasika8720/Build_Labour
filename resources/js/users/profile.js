@@ -12,6 +12,11 @@ import JobAds from '../components/job/JobAds';
 import Ads from '../components/common/Ads';
 import Alert from '../components/common/Alert';
 import Navigation from '../components/common/Navigation';
+import GridJobs from '../components/profile/GridJobs';
+import UploadJson from '../components/profile/UploadJson';
+import UploadAds from '../components/profile/UploadAds';
+import UploadEdit from '../components/profile/UploadEdit';
+
 
 new Vue({
     el: "#app",
@@ -28,5 +33,9 @@ new Vue({
         Ads,
         Alert,
         Navigation,
+        GridJobs,
+        UploadJson,
+        UploadAds,
+        UploadEdit,
     },
 });

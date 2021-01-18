@@ -155,6 +155,18 @@
                             </span>
                             </p>
                         </li>
+
+                        <li ref="nav-jobAds" @click="onClickJobAds" v-if="urole==5">
+                            <div class="bl-nav-tab">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18" viewBox="0 0 22 18">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path d="M-1-3h24v24H-1z"/>
+                                        <path fill="#FFF" fill-rule="nonzero" d="M20 0H2C.9 0 0 .9 0 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V2c0-1.1-.9-2-2-2zm-1 16H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1zM5 7h7a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm0-3h7a1 1 0 0 1 0 2H5a1 1 0 1 1 0-2z"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <p class="bl-nav-tab-label">Upload Job Ads</p>
+                        </li>
                     </ul>
 
                     <div class="bl-nav-notification">
@@ -199,6 +211,7 @@
         name: "navigation",
         data() {
             return {
+                urole:'',
                 keyword: '',
                 jobNavLabel: 'My Jobs',
                 search_placeholder: 'Search Jobs, Individuals & Companies',
@@ -234,6 +247,7 @@
                     case 'company': this.jobNavLabel = 'My Jobs'; break;
                     default :
                         this.jobNavLabel = 'Search Jobs'
+                        this.urole = '5'
                 }
             }
 
@@ -283,6 +297,9 @@
                 window.location.href = '/user/profile';
             },
 
+            onClickJobAds() {
+                window.location.href = '/user/UploadJobAds';
+            },
 
             onClickJobs() {
 

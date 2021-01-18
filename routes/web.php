@@ -36,6 +36,11 @@ Route::prefix('user')
             Route::get('profile', 'UsersController@showProfile')->name('profile');
             Route::get('profile/{id}', 'UsersController@showProfile')->name('profile')->middleware('company_has_viewed_profile');
             Route::get('onboarding', 'UsersController@showOnboarding')->name('onboarding');
+            Route::get('UploadJobAds', 'UsersController@UploadJobAds')->name('UploadJobAds');//Uploaded Job Ads UploadJson
+            Route::get('UploadJson', 'UsersController@UploadJson')->name('UploadJson');// when Upload Json file Button click UploadAds
+            Route::get('UploadAds/{id}', 'UsersController@UploadAds')->name('UploadAds');// when view Button click -> UploadAds
+            Route::get('GetUploadsValus','JobsController@GetUploadsValus'); //get to uploaded json file on gridJobs page
+
         });
         Route::get('verify', 'UsersController@showVerifyForm')->name('verify');
     });

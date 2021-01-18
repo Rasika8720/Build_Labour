@@ -38,7 +38,7 @@
                         </span>
 
                         <span class="bl-label-14 bl-ml15 mt-0 pt-0" :ref="'empDuration-' + index" v-if="employment.duration_number && employment.duration_type">
-                            {{ employment.duration_number }} {{employment.duration_type}}</span>
+                            {{ employment.duration_number }} {{employment.duration_type}}
                         </span>
                     </div>
                 </div>

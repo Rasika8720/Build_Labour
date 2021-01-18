@@ -17,10 +17,12 @@
         "kreait/firebase-php": "3.3.*",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
+        "lcobucci/jwt": "3.3.3",
         "paragraph1/php-fcm": "0.7.*",
         "pusher/pusher-php-server": "^4.1",
         "torann/laravel-repository": "^0.5.10",
-        "tymon/jwt-auth": "1.0.*"
+        "tymon/jwt-auth": "^1.0",
+        "nesbot/carbon": "^2.42.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
