@@ -324,7 +324,7 @@ class JobsController extends Controller
 
         $fileName = $file->getClientOriginalName();
         $exsists=Upload::where('file_name',$fileName)->first();
-        // dd($exsists);
+
         if($exsists==null){
             $data['file_name'] = $fileName;
             $data['uploaded_date'] = date("Y-m-d");
